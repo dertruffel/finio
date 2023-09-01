@@ -1,0 +1,96 @@
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import '../../styles/navbar.css';
+
+class Navbar extends Component {
+    constructor() {
+        super();
+        this.state = {
+            showMenu: false,
+        };
+    }
+
+    toggleMenu = () => {
+        this.setState((prevState) => ({
+            showMenu: !prevState.showMenu,
+        }));
+    };
+
+    render() {
+        const { showMenu } = this.state;
+
+        return (
+            <nav>
+                <div className={`nav-container ${showMenu ? 'active' : ''}`}>
+                    <div className="nav-logo">
+                        <NavLink to="/">
+                            <img src="https://via.placeholder.com/150x50" alt="logo" />
+                        </NavLink>
+                    </div>
+                    <div className="nav-toggle" onClick={this.toggleMenu}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul className={`nav-links ${showMenu ? 'active' : ''}`}>
+                        <li class="lilly">
+                            <NavLink to="/" className="nav-button">
+                                Home
+                            </NavLink>
+                        </li>
+                        <li class="lilly">
+                            <NavLink to="/news" className="nav-button">
+                                News
+                            </NavLink>
+                        </li>
+                        <li className="dropdown">
+                            <NavLink to="/calculators/1" className="nav-button">
+                                Calculators
+                            </NavLink>
+                            <ul className="dropdown-content">
+                                <li class="lilly dropdown-button">
+                                    <NavLink to="/calculators/1" class="dropdown-button">Calculator 1</NavLink>
+                                </li>
+                                <li class="lilly dropdown-button">
+                                    <NavLink to="/calculators/2" class="dropdown-button">Calculator 2</NavLink>
+                                </li>
+                                <li class="lilly dropdown-button">
+                                    <NavLink to="/calculators/3" class="dropdown-button">Calculator 3</NavLink>
+                                </li>
+                                <li class="lilly dropdown-button">
+                                    <NavLink to="/calculators/4" class="dropdown-button">Calculator 4</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="lilly">
+                            <NavLink to="/aboutus" className="nav-button">
+                                About Us
+                            </NavLink>
+                        </li>
+                        <li class="lilly">
+                            <NavLink to="/contactus" className="nav-button">
+                                Contact Us
+                            </NavLink>
+                        </li>
+                        <li class="lilly">
+                            <NavLink to="/login" className="nav-button">
+                                Login
+                            </NavLink>
+                        </li>
+
+                        {/* Mobile Navigation Toggle */}
+                        {showMenu && (
+                            <li className="nav-toggle-mobile" onClick={this.toggleMenu}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </li>
+                        )}
+                    </ul>
+                </div>
+            </nav>
+        );
+    }
+}
+
+export default Navbar;

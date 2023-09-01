@@ -1,0 +1,16 @@
+
+
+footer {
+    background-color: maroon;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+/*    make it go to the bottom of the page*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+}
+
+
+
