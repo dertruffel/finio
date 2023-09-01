@@ -1,0 +1,141 @@
+/* Navbar Styles */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.nav-container.active {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav-logo {
+    margin-right: 20px;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Common Button Styles */
+.nav-button,
+.dropdown-button {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px; /* Adjust padding for better clickability */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, text-decoration 0.3s; /* Add text-decoration transition */
+}
+
+.nav-button:hover,
+.dropdown-button:hover {
+    background-color: #61dafb;
+    color: black;
+    text-decoration: none; /* Remove underlining on hover */
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    /*margin: 0 15px;*/
+}
+
+/* Updated Dropdown Content Styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #282c34;
+    margin-top: 0.5rem;
+    /* Set width to match the button's padding */
+    width: calc(100% + 40px);
+    left: -20px; /* Adjust for width increase */
+    min-width: 160px;
+    z-index: 1;
+    top: 100%; /* Position dropdown below the button */
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Updated Dropdown Content Link Styles */
+.dropdown-content a {
+    color: white;
+    padding: 1.5rem 1.5rem;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover effect like the first version */
+.dropdown-content a:hover {
+    background-color: #61dafb;
+    color: black;
+    text-decoration: none; /* Remove underlining on hover */
+}
+
+/* Keep the second version's functionality */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Media Query for Mobile */
+@media screen and (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #007BFF;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* Mobile Button Styles */
+    .nav-button,
+    .dropdown-button {
+        margin: 0;
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .dropdown {
+        margin: 0;
+    }
+}
