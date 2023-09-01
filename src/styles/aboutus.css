@@ -1,0 +1,38 @@
+/* Add these styles to your aboutus.css file */
+
+.aboutus-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.aboutus-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 600px; /* Adjust the width to make it wider */
+    margin: 20px; /* Increase the margins for more spacing inside the box */
+}
+
+.aboutus-content h1 {
+    color: #007BFF;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.aboutus-content p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.aboutus-image {
+    width: 200px;
+    height: 150px;
+    margin: 20px; /* Add margin around the images */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    object-fit: cover;
+}
