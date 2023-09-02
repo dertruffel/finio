@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../styles/aboutus.css';
+import './aboutus.css';
 
 class AboutUsObject extends Component {
     render() {
