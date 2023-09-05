@@ -1,0 +1,69 @@
+/* Update your CSS styles */
+.news-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column; /* Change to column */
+    align-items: center; /* Center horizontally */
+}
+
+.news-item {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 1rem 0; /* Add margin between boxes */
+    padding: 15px; /* Increase padding */
+    width: 70%; /* Adjust width */
+    text-align: left;
+    max-width: 800px; /* Limit maximum width */
+    position: relative; /* Add position relative for image positioning */
+}
+
+.news-item h2 {
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+.news-image {
+    max-width: 100%; /* Make the image as wide as its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any inline spacing */
+    margin: 1rem 1rem; /* Center horizontally, add margin at the bottom */
+}
+
+.news-item p {
+    margin: 1rem;
+}
+
+.news-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+}
+
+.news-detail-link {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.news-detail-link-black {
+    text-decoration: none;
+    color: #444444;
+}
+
+.share-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.share-button:hover {
+    background-color: #0056b3;
+}
