@@ -6,6 +6,8 @@ import Contact from "./routes/Contact";
 import Aboutus from "./routes/Aboutus";
 import News from "./routes/News";
 import NewsDetail from "./routes/NewsDetail";
+import CalculatorGrossNet from "./routes/CalculatorGrossNet";
+import CalculatorVat from "./routes/CalculatorVat";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
                 <Route path="/aboutus" element={<Aboutus />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/news/:id" element={<NewsDetail />} />
+                <Route path={"/calculators/1"} element={<CalculatorGrossNet />} />
+                <Route path={"/calculators/2"} element={<CalculatorVat />} />
           </Routes>
 
   );

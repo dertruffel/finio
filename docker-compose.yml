@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 
 services:
 
@@ -7,14 +7,16 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    environment:
+        CHOKIDAR_USEPOLLING: "true"
+        NODE_ENV: development
+        DEBUG: "true"
+        SECRET_KEY: "35235b36-ede5-4e00-865d-5dbd7a1944e2"
     ports:
       - "2001:3000"
     volumes:
         - ./:/app
-    environment:
-        - NODE_ENV = 'development'
-        - DEBUG = 'True'
-        - SECRET_KEY = "35235b36-ede5-4e00-865d-5dbd7a1944e2"
+
 
 
 

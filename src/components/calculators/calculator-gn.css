@@ -1,0 +1,84 @@
+.gn-container{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-direction: column;
+    align-items: center;
+    height: 50rem;
+}
+
+.gn-container-box {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px; /* Increase the padding for a larger box */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 500px; /* Adjust the width to make it wider */
+    text-align: center;
+    display: flex; /* Use flex to center content vertically */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+}
+
+.li,ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.gn-month {
+    font-weight: bold;
+    float: left;
+    clear: right;
+}
+
+.gn-pay {
+    float: right;
+    clear: right;
+    font-weight: normal;
+}
+
+.gn-select{
+    padding: 8px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 5px; /* Rounded corners */
+    width: 13rem;
+    background-color: #fff; /* Background color */
+    color: #333; /* Text color */
+}
+
+.gn-input{
+    padding: 8px !important;
+    font-size: 16px!important;
+    border: 1px solid #ccc!important;
+    border-radius: 5px!important;
+    width: 12rem!important;
+    background-color: #fff!important;
+    color: #333!important;
+}
+
+/* Style for the options within the select */
+.gn-select option {
+    background-color: #fff; /* Background color of options */
+    color: #333; /* Text color of options */
+    padding: 8px; /* Adjust padding as needed */
+}
+
+.gn-button {
+    padding: 10px 20px; /* Adjust padding as needed for button size */
+    margin-top: 1rem; /* Add top margin */
+    font-size: 16px; /* Adjust font size as needed */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #007BFF; /* Background color */
+    color: #fff; /* Text color */
+    cursor: pointer; /* Add pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition on hover */
+}
+
+/* Hover state style (optional) */
+.gn-button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
