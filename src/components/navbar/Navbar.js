@@ -49,16 +49,10 @@ class Navbar extends Component {
                             </NavLink>
                             <ul className="dropdown-content">
                                 <li class="lilly dropdown-button">
-                                    <NavLink to="/calculators/1" class="dropdown-button">Calculator 1</NavLink>
+                                    <NavLink to="/calculators/1" class="dropdown-button">Calculator Gross/Net</NavLink>
                                 </li>
                                 <li class="lilly dropdown-button">
-                                    <NavLink to="/calculators/2" class="dropdown-button">Calculator 2</NavLink>
-                                </li>
-                                <li class="lilly dropdown-button">
-                                    <NavLink to="/calculators/3" class="dropdown-button">Calculator 3</NavLink>
-                                </li>
-                                <li class="lilly dropdown-button">
-                                    <NavLink to="/calculators/4" class="dropdown-button">Calculator 4</NavLink>
+                                    <NavLink to="/calculators/2" class="dropdown-button">Calculator Vat</NavLink>
                                 </li>
                             </ul>
                         </li>
@@ -72,11 +66,7 @@ class Navbar extends Component {
                                 Contact Us
                             </NavLink>
                         </li>
-                        <li class="lilly">
-                            <NavLink to="/login" className="nav-button">
-                                Login
-                            </NavLink>
-                        </li>
+
 
                         {/* Mobile Navigation Toggle */}
                         {showMenu && (
