@@ -37,26 +37,12 @@ class CalculatorVAT extends React.Component {
     }
 
     handleCalculate = () => {
-        // let payload = {
-        //     netPrice: this.state.netPrice,
-        //     grossPrice: this.state.grossPrice,
-        // }
-        // let request = new Request('http://finio-api.truffel.dev/api/calculator_vat', {
-        //     method: 'POST',
-        //     headers: new Headers({ 'Content-Type': 'application/json' }),
-        //     body: JSON.stringify(payload)
-        // });
-        // let netPrice = request.netPrice;
-        // let grossPrice = request.grossPrice;
-        // let vatAmount = request.vatAmount;
 
         const { netPrice, grossPrice, vatAmount } = calculateProductPrices(this.state);
 
-        // Update state with calculated prices
         this.setState({ netPrice, grossPrice, vatAmount });
     }
     handleSwitchChange = () => {
-        // Toggle between net and gross calculation
         this.setState((prevState) => ({
             isNetCalculation: !prevState.isNetCalculation,
             netPrice: 0, // Reset Net Price when switching

@@ -66,6 +66,22 @@ class CalculatorEarning extends React.Component {
         //     headers: new Headers({ 'Content-Type': 'application/json' }),
         //     body: JSON.stringify(payload)
         // });
+        // fetch(request)
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         let months = data;
+        //         this.setState({ months });
+        //         this.setState({ isCalculating: true });
+        //     })
+        //     .catch(error => {
+        //         console.error('There was a problem with the fetch operation:', error);
+        //     });
+        //
 
         const months = calculateNetPay(this.state);
 
