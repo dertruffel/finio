@@ -3,6 +3,7 @@ import Header from '../components/header/Header';
 import Navbar from '../components/navbar/Navbar';
 import Footer from '../components/footer/Footer';
 import NewsDetail from "../components/news/NewsDetail";
+import FooterAbsolute from "../components/footer/Footer-Absolute";
 
 function Home() {
     return (
@@ -10,7 +11,7 @@ function Home() {
             {/*<Header />*/}
             <Navbar />
             <NewsDetail />
-            {/*<Footer />*/}
+            <FooterAbsolute />
         </>
 
     );

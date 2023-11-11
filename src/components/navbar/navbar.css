@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
+    background-color: #35638f;
+    color: #adadad;
+    padding: 5px 10px;
 }
 
 .nav-container.active {

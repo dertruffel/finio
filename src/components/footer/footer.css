@@ -1,15 +1,25 @@
 
 
-footer {
-    background-color: maroon;
+.footer {
+    background-color: #35638f;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     margin-top: 1rem;
-/*    make it go to the bottom of the page*/
-/*    position: absolute;*/
-/*    bottom: 0;*/
-/*    width: 100%;*/
+}
+
+.footer-absolute {
+    background-color: #35638f;
+    color: white;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    /*    make it go to the bottom of the page*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 

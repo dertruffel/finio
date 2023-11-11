@@ -4,6 +4,7 @@ import Navbar from '../components/navbar/Navbar';
 import Footer from '../components/footer/Footer';
 import LoginObject from "../components/login/Login";
 import ContactObject from "../components/contact/Contact";
+import FooterAbsolute from "../components/footer/Footer-Absolute";
 
 function Home() {
     return (
@@ -11,7 +12,7 @@ function Home() {
             {/*<Header />*/}
             <Navbar />
             <ContactObject />
-            {/*<Footer />*/}
+            <FooterAbsolute />
         </>
 
     );

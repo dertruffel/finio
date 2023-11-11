@@ -5,7 +5,7 @@ function Footer(){
 
     return(
         <>
-        <footer>
+            <footer className="footer">
             <div>
                 <p>© 2023 - All Rights Reserved</p>
             </div>

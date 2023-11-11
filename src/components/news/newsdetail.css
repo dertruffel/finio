@@ -7,7 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* This makes the container take the full viewport height */
+    height: 60rem;
 }
 
 .detail-news-item {
