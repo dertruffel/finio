@@ -67,3 +67,24 @@
 .share-button:hover {
     background-color: #0056b3;
 }
+
+.page-selector {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.page-button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #35638f;
+    border-radius: 4px;
+}
+
+.page-button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}

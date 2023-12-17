@@ -1,55 +1,55 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'; // Import NavLink from React Router
+import { NavLink } from 'react-router-dom';
 import './news.css';
 
 class NewsObject extends Component {
-    constructor() {
-        super();
-        this.state = {
-            news: [],
-            enlarged: false,
-        };
-    }
+    state = {
+        articles: [],
+        enlarged: false,
+        loading: true,
+        currentPage: 1,
+        totalPages: 1,
+    };
 
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then((response) => response.json())
-            .then((json) => {
-                const newsWithImages = json.slice(0, 7).map((item, index) => ({
-                    ...item,
-                    imageUrl: `https://via.placeholder.com/750x150?text=Image${index + 1}`,
-                }));
+        this.fetchData();
+    }
 
+    fetchData = (page = 1) => {
+        const apiUrl = `https://api-finio.truffel.dev/api/articles/?page=${page}`;
+
+        fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
                 this.setState({
-                    news: newsWithImages,
+                    articles: data.articles,
+                    loading: false,
+                    currentPage: data.page,
+                    totalPages: data.pages,
+                });
+            })
+            .catch((error) => {
+                console.error('There was a problem with the fetch operation:', error);
+                this.setState({
+                    loading: false,
                 });
             });
-    }
-    // componentDidMount() {
-    //     const apiUrl = 'http://finio-api.truffel.dev/api/news';
-    //
-    //     fetch(apiUrl, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-    //         })
-    //         .then(data => {
-    //             console.log(data);
-    //             this.state.news = data;
-    //             console.log(this.state.news);
-    //
-    //         })
-    //         .catch(error => {
-    //             console.error('There was a problem with the fetch operation:', error);
-    //         });
-    // }
+    };
+
+    handlePageChange = (page) => {
+        this.fetchData(page);
+    };
 
     toggleEnlarged = () => {
         this.setState((prevState) => ({
@@ -58,39 +58,63 @@ class NewsObject extends Component {
     };
 
     render() {
-        const { news, enlarged } = this.state;
+        const { articles, enlarged, loading, currentPage, totalPages } = this.state;
+
+        if (loading) {
+            return <p>Loading...</p>;
+        }
 
         return (
             <div className="news-container">
                 <h1>News</h1>
                 <div className="news-list">
-                    {news.map((newsItem) => (
-                        <div className={`news-item ${enlarged ? 'enlarged' : ''}`} key={newsItem.id}>
+                    {articles.map((article) => (
+                        <div className={`news-item ${enlarged ? 'enlarged' : ''}`} key={article.id}>
                             <div className="news-content">
                                 <h2>
-                                    <NavLink to={`/news/${newsItem.id}`} className="news-detail-link-black">
-                                        {newsItem.title}
+                                    <NavLink to={`${article.link}`} className="news-detail-link-black">
+                                        {article.title_eng}
                                     </NavLink>
                                 </h2>
                                 <div className="news-image">
-                                    <NavLink to={`/news/${newsItem.id}`} className="news-detail-link-black">
-                                        <img src={newsItem.imageUrl} alt={` ${newsItem.title}`} />
+                                    <NavLink to={`${article.link}`} className="news-detail-link-black">
+                                        <img
+                                            src={article.image}
+                                            alt={article.title_eng}
+                                            style={{ maxWidth: '100%', height: 'auto' }}
+                                        />
                                     </NavLink>
                                 </div>
-                                <p>{newsItem.body.substring(0, 512)}...</p>
+                                <p>{article.description_eng.substring(0, 512)}...</p>
                                 <div className="news-actions">
-                                    <NavLink to={`/news/${newsItem.id}`} className="news-detail-link">
+                                    <NavLink to={`${article.link}`} className="news-detail-link" target="_blank">
                                         Read More
                                     </NavLink>
-                                    <button className="share-button">Share</button>
                                 </div>
                             </div>
                         </div>
                     ))}
+                    <div className="page-selector news-container">
+                        {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+                            <button
+                                key={page}
+                                onClick={() => this.handlePageChange(page)}
+                                className={`page-button ${currentPage === page ? 'active' : ''}`}
+                            >
+                                {page}
+                            </button>
+                        ))}
+                    </div>
                 </div>
+
+
             </div>
+
         );
+
+
     }
+
 }
 
 export default NewsObject;

@@ -3,91 +3,79 @@ import './calculator-gn.css';
 // React Component
 
 
-function calculateNetPay(payload) {
-    // Mock API call with payload
-    const netPay = payload.monthlyPayGross * 0.8;
-    let months = [
-        { month: 'January', pay: netPay },
-        { month: 'February', pay: netPay },
-        { month: 'March', pay: netPay },
-        { month: 'April', pay: netPay },
-        { month: 'May', pay: netPay },
-        { month: 'June', pay: netPay },
-        { month: 'July', pay: netPay },
-        { month: 'August', pay: netPay },
-        { month: 'September', pay: netPay },
-        { month: 'October', pay: netPay },
-        { month: 'November', pay: netPay },
-        { month: 'December', pay: netPay },
-    ];
-
-    return months;
-}
+// function calculateNetPay(payload) {
+//     // Mock API call with payload
+//     const netPay = payload.monthlyPayGross * 0.8;
+//     let months = [
+//         { month: 'January', pay: netPay },
+//         { month: 'February', pay: netPay },
+//         { month: 'March', pay: netPay },
+//         { month: 'April', pay: netPay },
+//         { month: 'May', pay: netPay },
+//         { month: 'June', pay: netPay },
+//         { month: 'July', pay: netPay },
+//         { month: 'August', pay: netPay },
+//         { month: 'September', pay: netPay },
+//         { month: 'October', pay: netPay },
+//         { month: 'November', pay: netPay },
+//         { month: 'December', pay: netPay },
+//     ];
+//
+//     return months;
+// }
 class CalculatorEarning extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             contract: 'uop',
-            zus: 'zus-my-employeer',
-            zusb2b: 'zus-my-employeer',
+            zus: 'zus-my-employer',
+            zusb2b: 'ulga',
             companyRunningCost: 0,
             incomeTax: '12/32',
             sickLeave: 'no',
             costOfIncome: 20,
             time: 'full-time',
-            workFromHome: 'no',
             under26: 'no',
             monthlyPayGross: 0,
             monthlyPayNet: 0,
             months: [],
-            partner: 'no',
             isCalculating: false,
         };
     }
 
     handleCalculate = () => {
-        // let payload = {
-        //     contract: this.state.contract,
-        //     zus: this.state.zus,
-        //     zusb2b: this.state.zusb2b,
-        //     companyRunningCost: this.state.companyRunningCost,
-        //     incomeTax: this.state.incomeTax,
-        //     sickLeave: this.state.sickLeave,
-        //     costOfIncome: this.state.costOfIncome,
-        //     time: this.state.time,
-        //     workFromHome: this.state.workFromHome,
-        //     under26: this.state.under26,
-        //     monthlyPayGross: this.state.monthlyPayGross,
-        //     monthlyPayNet: this.state.monthlyPayNet,
-        //     partner: this.state.partner,
-        // }
-        // let request = new Request('http://finio-api.truffel.dev/api/calculator_earnings', {
-        //     method: 'POST',
-        //     headers: new Headers({ 'Content-Type': 'application/json' }),
-        //     body: JSON.stringify(payload)
-        // });
-        // fetch(request)
-        //     .then(response => {
-        //         if (!response.ok) {
-        //             throw new Error('Network response was not ok');
-        //         }
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         let months = data;
-        //         this.setState({ months });
-        //         this.setState({ isCalculating: true });
-        //     })
-        //     .catch(error => {
-        //         console.error('There was a problem with the fetch operation:', error);
-        //     });
-        //
-
-        const months = calculateNetPay(this.state);
+        let payload = {
+            type: this.state.contract,
+            zus: this.state.zus,
+            zusb2b: this.state.zusb2b,
+            tax: this.state.incomeTax,
+            sickLeave: this.state.sickLeave,
+            costOfIncome: this.state.costOfIncome,
+            under26: this.state.under26,
+            monthlyPayGross: this.state.monthlyPayGross,
+        }
+        let request = new Request('https://api-finio.truffel.dev/api/calculator_pay/', {
+            method: 'POST',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(payload)
+        });
+        fetch(request)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                let months = data;
+                this.setState({ months });
+                this.setState({ isCalculating: true });
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
 
 
-        this.setState({ months });
-        this.setState({ isCalculating: true });
     }
 
     render() {
@@ -127,21 +115,6 @@ class CalculatorEarning extends React.Component {
                             </tr>
 
                         )}
-                        {this.state.contract === 'uop' && (
-                        <tr>
-                            <td>Do you work from home?</td>
-                            <td>
-                                <select
-                                    className={"gn-select"}
-                                    value={this.state.workFromHome}
-                                    onChange={(e) => this.setState({ workFromHome: e.target.value })}
-                                >
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                </select>
-                            </td>
-                        </tr>
-                        )}
                         {this.state.contract === 'b2b' && (
                             <tr>
                                 <td>Zus:</td>
@@ -151,7 +124,7 @@ class CalculatorEarning extends React.Component {
                                         value={this.state.zusb2b}
                                         onChange={(e) => this.setState({ zusb2b: e.target.value })}
                                     >
-                                        <option value="none">No Zus (1st half a year)</option>
+                                        <option value="ulga">No Zus (1st half a year)</option>
                                         <option value="preference">Preferential Zus (2 years)</option>
                                         <option value="normalZus">Normal Zus</option>
                                     </select>
@@ -168,7 +141,7 @@ class CalculatorEarning extends React.Component {
                                         onChange={(e) => this.setState({ incomeTax: e.target.value })}
                                     >
                                         <option value="12/32">12% / 32%</option>
-                                        <option value="19%-linear">19% Linear tax</option>
+                                        <option value="19">19% Linear tax</option>
                                     </select>
                                 </td>
                             </tr>
@@ -197,9 +170,9 @@ class CalculatorEarning extends React.Component {
                                         value={this.state.zus}
                                         onChange={(e) => this.setState({ zus: e.target.value })}
                                     >
-                                        <option value="zus-my-employeer">Zus is paid with my employeer</option>
-                                        <option value="zus-another-employeer">Zus is paid by another employeer</option>
-                                        <option value="under-26-student">Im a student under 26 years old</option>
+                                        <option value="zus-my-employer">Zus is paid with my employeer</option>
+                                        <option value="zus-other-employer">Zus is paid by another employeer</option>
+                                        <option value="student26">Im a student under 26 years old</option>
                                     </select>
                                 </td>
                             </tr>
@@ -218,21 +191,6 @@ class CalculatorEarning extends React.Component {
                                     </select>
                                 </td>
                             </tr>
-                        )}
-                        {this.state.contract === 'uop' && (
-                        <tr>
-                            <td>Are you filling PIT with your partner?</td>
-                            <td>
-                                <select
-                                    className={"gn-select"}
-                                    value={this.state.partner}
-                                    onChange={(e) => this.setState({ partner: e.target.value })}
-                                >
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                </select>
-                            </td>
-                        </tr>
                         )}
                         {this.state.contract === 'ud' && (
                             <tr>
@@ -279,17 +237,19 @@ class CalculatorEarning extends React.Component {
                         <div>
                             <h2>Monthly Net Pay for Each Month</h2>
                             <ul>
-                                {this.state.months.map((item, index) => (
+                                {Object.entries(this.state.months).map(([month, pay], index) => (
                                     <li key={index}>
-                                        <span className="gn-month">{item.month}:</span>
-                                        <span className="gn-pay">{item.pay}</span>
+                                        <span className="gn-month">{month}:</span>
+                                        <span className="gn-pay">{pay}</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                    )}
+                    )}                <p>Disclaimer: This calculator is for informational purposes only and does not constitute legal, tax, accounting or other professional advice. The calculator is not intended to be a substitute for professional advice. Always seek the advice of a qualified professional with any questions you may have regarding a decision. Never disregard professional advice or delay in seeking it because of something you have read on this website.</p>
+
                 </div>
-                </div>
+
+            </div>
         );
     }
 }
