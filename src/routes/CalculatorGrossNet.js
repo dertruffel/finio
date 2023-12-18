@@ -4,6 +4,7 @@ import Navbar from '../components/navbar/Navbar';
 import Footer from '../components/footer/Footer';
 import CalculatorEarning from "../components/calculators/CalculatorEarning";
 import FooterAbsolute from "../components/footer/Footer-Absolute";
+import FooterBigMargin from "../components/footer/Footer-Big-Margin";
 
 function Home() {
     return (
@@ -11,7 +12,7 @@ function Home() {
             {/*<Header />*/}
             <Navbar />
             <CalculatorEarning />
-            <FooterAbsolute />
+            <Footer />
         </>
 
     );

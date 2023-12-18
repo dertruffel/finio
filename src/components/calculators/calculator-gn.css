@@ -4,7 +4,10 @@
     gap: 5rem;
     flex-direction: column;
     align-items: center;
-    height: 65rem;
+    height: auto;
+    min-height: 73vh;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
 }
 
 .gn-container-box {
@@ -31,8 +34,11 @@
     font-weight: bold;
     float: left;
     clear: right;
+    
 }
-
+.gn-month::first-letter {
+    text-transform:capitalize;
+}
 .gn-pay {
     float: right;
     clear: right;

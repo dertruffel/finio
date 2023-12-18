@@ -6,7 +6,18 @@
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    margin-top: 1rem;
+    margin-top: 5rem;
+
+}
+
+.footer-big-margin{
+    background-color: #35638f;
+    color: white;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 15rem;
+
 }
 
 .footer-absolute {
@@ -15,7 +26,7 @@
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    margin-top: 1rem;
+    margin-top: 3rem;
     /*    make it go to the bottom of the page*/
     position: absolute;
     bottom: 0;
